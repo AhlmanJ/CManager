@@ -1,0 +1,8 @@
+﻿namespace CManager.Domain.Models;
+
+public class CustomerAddressModel
+{
+    public string StreetAddress { get; set; } = null!;
+    public string ZipCode { get; set; } = null!;
+    public string City { get; set; } = null!;
+}
