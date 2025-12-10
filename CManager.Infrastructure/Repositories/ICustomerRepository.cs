@@ -6,6 +6,6 @@ public interface ICustomerRepository
 {
     bool SaveCustomers(List<CustomerModel> Customers);
     List<CustomerModel> GetAllCustomers();
-    CustomerModel GetCustomerByName(string name);
-    CustomerModel DeleteCustomer(string email);
+    CustomerModel GetCustomerByName(string FirstName);
+    bool DeleteCustomer(string Email);
 }
