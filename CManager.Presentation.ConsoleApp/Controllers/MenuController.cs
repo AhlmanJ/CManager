@@ -11,7 +11,7 @@
 
 
 using CManager.Application.Services;
-
+using CManager.Application.Validators;
 
 namespace CManager.Presentation.ConsoleApp.Controllers;
 
@@ -85,20 +85,14 @@ public class MenuController
         Console.Clear();
         Console.WriteLine("Create new customer:");
         Console.WriteLine("");
-        Console.Write("First name: ");
-        var firstName = Console.ReadLine();
-        Console.Write("Last name: ");
-        var lastName = Console.ReadLine();
-        Console.Write("Email: ");
-        var email = Console.ReadLine();
-        Console.Write("Phonenumber: ");
-        var phoneNr = Console.ReadLine(); 
-        Console.Write("Street address: ");
-        var streetAddress = Console.ReadLine();
-        Console.Write("Zipcode: ");
-        var zipCode = Console.ReadLine();
-        Console.Write("City: ");
-        var city = Console.ReadLine();
+
+        var firstName = InputValidator.ValidateInput("First name: ");
+        var lastName = InputValidator.ValidateInput("Last name: ");
+        var email = EmailValidator.ValidateEmail("Email: ");
+        var phoneNr = PhoneNrValidator.ValidatePhoneNr("Phone number: ");
+        var streetAddress = InputValidator.ValidateInput("Street address: ");
+        var zipCode = InputValidator.ValidateInput("Zipcode: ");
+        var city = InputValidator.ValidateInput("City: ");
 
         var result = _customerService.CreateCustomer(firstName, lastName, email, phoneNr, streetAddress, zipCode, city );
 
@@ -114,9 +108,7 @@ public class MenuController
             Console.WriteLine("Something went wrong! Customer was not created, please try again.");
         }
 
-        Console.WriteLine("");
-        Console.WriteLine("Press any key to continue....");
-        Console.ReadKey();
+        SystemHolder();
     }
 
     private void GetAllCustomers()
@@ -132,8 +124,7 @@ public class MenuController
         {
             Console.WriteLine("The list is empty!");
             Console.WriteLine("");
-            Console.WriteLine("Press any key to continue....");
-            Console.ReadKey();
+            SystemHolder();
         }
         else
         {
@@ -147,9 +138,7 @@ public class MenuController
                 Console.WriteLine("-----------------------------------------------");
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Press any key to continue....");
-            Console.ReadKey();
+            SystemHolder();
         }
     }
 
@@ -161,13 +150,12 @@ public class MenuController
             Console.Clear();
             Console.WriteLine("");
             Console.WriteLine("Could not display all customers. Please try again in a moment.");
+
         if (!customers.Any())
         {
             Console.Clear();
             Console.WriteLine("No customers to delete.");
-            Console.WriteLine("");
-            Console.WriteLine("Press any key to continue....");
-            Console.ReadKey();
+            SystemHolder();
             return;
         }
 
@@ -186,7 +174,7 @@ public class MenuController
 
         Console.WriteLine("");
         Console.Write("Enter customer Email: ");
-        string email =Console.ReadLine().ToLower();
+        string email = Console.ReadLine().ToLower();
 
         var result = _customerService.DeleteCustomer(email);
 
@@ -203,10 +191,7 @@ public class MenuController
             Console.WriteLine($"Somethig went wrong, customer {email} was not deleted.");
         }
 
-        Console.WriteLine("");
-        Console.WriteLine("Press any key to continue....");
-        Console.ReadKey();
-
+        SystemHolder();
     }
 
     public void GetCustomerByName()
@@ -219,23 +204,11 @@ public class MenuController
         Console.Write("Enter customer First name: ");
         string name = Console.ReadLine().ToLower();
 
-        if (name == null || name == "")
-        {
-            Console.Clear();
-            Console.WriteLine("Input cannot be empty!");
-            Console.WriteLine("");
-            Console.WriteLine("Press any key to continue....");
-            Console.ReadKey();
-
-            return;
-        }
-        else if (!customers.Any())
+        if (!customers.Any())
         {
             Console.Clear();
             Console.WriteLine("No customers to delete.");
-            Console.WriteLine("");
-            Console.WriteLine("Press any key to continue....");
-            Console.ReadKey();
+            SystemHolder();
             return;
         }
 
@@ -269,6 +242,11 @@ public class MenuController
             
         }
 
+        SystemHolder();
+    }
+
+    public void SystemHolder()
+    {
         Console.WriteLine("");
         Console.WriteLine("Press any key to continue....");
         Console.ReadKey();
