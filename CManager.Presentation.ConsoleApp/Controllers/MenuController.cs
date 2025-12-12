@@ -12,6 +12,8 @@
 
 using CManager.Application.Services;
 using CManager.Application.Validators;
+using CManager.Presentation.ConsoleApp.Helpers;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CManager.Presentation.ConsoleApp.Controllers;
 
@@ -39,13 +41,13 @@ public class MenuController
             Console.WriteLine("1. Create Customer.");
             Console.WriteLine("2. View All Customers.");
             Console.WriteLine("3. View One Customer.");
-            Console.WriteLine("4. Remove Customer.");
+            Console.WriteLine("4. Delete Customer.");
             Console.WriteLine("Q. Exit. ");
             Console.WriteLine("");
             Console.WriteLine("=====================");
             Console.WriteLine("");
             Console.Write("INPUT: ");
-            menuInput = Console.ReadLine().ToLower();
+            menuInput = Console.ReadLine()!.ToLower();
 
             switch (menuInput)
             {
@@ -108,7 +110,7 @@ public class MenuController
             Console.WriteLine("Something went wrong! Customer was not created, please try again.");
         }
 
-        SystemHolder();
+        ReadKey.SystemHolder();
     }
 
     private void GetAllCustomers()
@@ -124,7 +126,7 @@ public class MenuController
         {
             Console.WriteLine("The list is empty!");
             Console.WriteLine("");
-            SystemHolder();
+            ReadKey.SystemHolder();
         }
         else
         {
@@ -138,7 +140,7 @@ public class MenuController
                 Console.WriteLine("-----------------------------------------------");
             }
 
-            SystemHolder();
+            ReadKey.SystemHolder();
         }
     }
 
@@ -155,7 +157,7 @@ public class MenuController
         {
             Console.Clear();
             Console.WriteLine("No customers to delete.");
-            SystemHolder();
+            ReadKey.SystemHolder();
             return;
         }
 
@@ -173,8 +175,8 @@ public class MenuController
             }
 
         Console.WriteLine("");
-        Console.Write("Enter customer Email: ");
-        string email = Console.ReadLine().ToLower();
+        Console.Write("Enter customer Email to delete: ");
+        string email = Console.ReadLine()!.ToLower();
 
         var result = _customerService.DeleteCustomer(email);
 
@@ -191,7 +193,7 @@ public class MenuController
             Console.WriteLine($"Somethig went wrong, customer {email} was not deleted.");
         }
 
-        SystemHolder();
+        ReadKey.SystemHolder();
     }
 
     public void GetCustomerByName()
@@ -201,16 +203,17 @@ public class MenuController
         Console.Clear();
         Console.WriteLine("Get all information about a Customer:");
         Console.WriteLine("");
-        Console.Write("Enter customer First name: ");
-        string name = Console.ReadLine().ToLower();
 
         if (!customers.Any())
         {
             Console.Clear();
-            Console.WriteLine("No customers to delete.");
-            SystemHolder();
+            Console.WriteLine("No customers to display.");
+            ReadKey.SystemHolder();
             return;
         }
+
+        Console.Write("Enter customer First name: ");
+        string name = Console.ReadLine()!.ToLower();
 
         try
         {
@@ -235,20 +238,13 @@ public class MenuController
             Console.WriteLine("-----------------------------------------------");
             Console.WriteLine("");
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             Console.Clear();
             Console.WriteLine($"The requested customer '{name}' could not be found.");
             
         }
 
-        SystemHolder();
-    }
-
-    public void SystemHolder()
-    {
-        Console.WriteLine("");
-        Console.WriteLine("Press any key to continue....");
-        Console.ReadKey();
+        ReadKey.SystemHolder();
     }
 }
