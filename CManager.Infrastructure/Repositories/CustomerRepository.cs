@@ -2,9 +2,25 @@
 /*
  
 !! Using chatGPT !! 
+---------------------------------------------------------------------------------
+1.
+
 In this file, I have used chatGPT to create the repository to delete a customer.
 
- */
+--------------------------------------------------------------------------------
+2.
+
+I also got help to debug this code = (c => c.FirstName == FirstName); 
+
+I kept getting this error message when searching for a specific customer by first name:
+"System.NullReferenceException: 'Object reference not set to an instance of an object.'
+ customer was null."
+- The answer was that I needed to convert the string so that all letters were in lowercase.
+- I also needed to check if the result was " null ", and then throw a exception if it was.
+- To get more information about " Null " and how to deal with it, i both watched Youtube tutorials and asked chatGPT.
+
+- A source reference to the YouTube video where they talk about this is available if needed.
+*/
 
 
 using CManager.Domain.Models;
@@ -30,7 +46,7 @@ public class CustomerRepository : ICustomerRepository
         };
     }
 
-    public bool SaveCustomers(List<CustomerModel> Customers)
+    public bool CreateCustomer(List<CustomerModel> Customers)
     {
         if(Customers == null)
             return false;
@@ -81,14 +97,14 @@ public class CustomerRepository : ICustomerRepository
         List<CustomerModel> customers = GetAllCustomers();
 
         // Iterates through the CustomerModel list to find the object with the correct email.
-        CustomerModel customerModelToRemove = customers.FirstOrDefault(c => c.Email == Email)!;
+        CustomerModel customerModelToRemove = customers.FirstOrDefault(c => c.Email.ToLower() == Email)!;
 
 
         // If the correct email is found, that item is deleted and then the updated list is saved.
         if (customerModelToRemove != null)
         {
             customers.Remove(customerModelToRemove);
-            SaveCustomers(customers);
+            CreateCustomer(customers);
             return true;
         }
 
@@ -96,16 +112,20 @@ public class CustomerRepository : ICustomerRepository
         return false;
     }
 
-/* ------------------------------------ chatGPT code END --------------------------------------------------- */
+    /* ------------------------------------ chatGPT code END --------------------------------------------------- */
 
 
     public CustomerModel GetCustomerByName(string FirstName)
     {
+        
         List<CustomerModel> customers = GetAllCustomers();
+        CustomerModel customerToDisplay = customers.FirstOrDefault(c => c.FirstName.ToLower() == FirstName)!; // Code debugged with help by chatGPT!
 
-        CustomerModel customerToDisplay = customers.FirstOrDefault(c => c.FirstName == FirstName)!; ;
-
+        if (customerToDisplay is null)
+        {
+            throw new Exception($"Could not find the customer {FirstName}");
+        }
+        
         return customerToDisplay;
     }
-
 }

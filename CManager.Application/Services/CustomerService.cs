@@ -14,7 +14,7 @@ using CManager.Infrastructure.Repositories;
 
 namespace CManager.Application.Services;
 
-public class CustomerService : ICustomerSerice
+public class CustomerService : ICustomerService
 {
 
     private readonly ICustomerRepository _customerRepository;
@@ -24,7 +24,7 @@ public class CustomerService : ICustomerSerice
         _customerRepository = customerRepository;
     }
 
-    public bool AddNewCustomer(string firstName, string lastName, string email, string phoneNr, string StreetAddress, string ZipCode, string City)
+    public bool CreateCustomer(string firstName, string lastName, string email, string phoneNr, string streetAddress, string zipCode, string city)
     {
         CustomerModel customerModel = new()
         {
@@ -35,15 +35,15 @@ public class CustomerService : ICustomerSerice
             PhoneNr = phoneNr,
             Address = new CustomerAddressModel
             {
-                StreetAddress = StreetAddress,
-                ZipCode = ZipCode,
-                City = City
+                StreetAddress = streetAddress,
+                ZipCode = zipCode,
+                City = city
             }
         };
 
         var customers = _customerRepository.GetAllCustomers();
         customers.Add(customerModel);
-        var result = _customerRepository.SaveCustomers(customers);
+        var result = _customerRepository.CreateCustomer(customers);
         return result;
     }
 
