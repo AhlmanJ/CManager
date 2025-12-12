@@ -8,6 +8,7 @@ In this file, I have used chatGPT to create the service to delete a customer!
 
 
 
+using CManager.Application.Factories;
 using CManager.Application.Helpers;
 using CManager.Application.Services;
 using CManager.Domain.Models;
@@ -27,21 +28,7 @@ public class CustomerService : ICustomerService
 
     public bool CreateCustomer(string firstName, string lastName, string email, string phoneNr, string streetAddress, string zipCode, string city)
     {
-        CustomerModel customerModel = new()
-        {
-            Id = CustomerIdGenerator.GenerateGuidId(),
-            FirstName = firstName,
-            LastName = lastName,
-            Email = email,
-            PhoneNr = phoneNr,
-            Address = new CustomerAddressModel
-            {
-                StreetAddress = streetAddress,
-                ZipCode = zipCode,
-                City = city
-            }
-        };
-
+        var customerModel = CustomerFactory.Create(firstName, lastName, email, phoneNr, streetAddress, zipCode, city);
         var customers = _customerRepository.GetAllCustomers();
         customers.Add(customerModel);
         var result = _customerRepository.CreateCustomer(customers);
