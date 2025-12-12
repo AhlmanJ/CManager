@@ -2,9 +2,9 @@
 
 namespace CManager.Application.Services;
 
-public interface ICustomerSerice
+public interface ICustomerService
 {
-    bool AddNewCustomer(string firstName, string lastName, string email, string phoneNr, string StreetAddress, string ZipCode, string City);
+    bool CreateCustomer(string firstName, string lastName, string email, string phoneNr, string StreetAddress, string ZipCode, string City);
 
     IEnumerable<CustomerModel> GetAllCustomers(out bool hasError);
 
@@ -12,5 +12,3 @@ public interface ICustomerSerice
 
     bool DeleteCustomer(string email);
 }
-
-
