@@ -91,16 +91,16 @@ public class CustomerRepository : ICustomerRepository
 
     /*----------------------------- Created by chatGPT! (But my own comments ) ----------------------------------*/
 
-    public bool DeleteCustomer(string Email)
+    public bool DeleteCustomer(string email)
     {
         // Retrieves all customers.
         List<CustomerModel> customers = GetAllCustomers();
 
         // Iterates through the CustomerModel list to find the object with the correct email.
-        CustomerModel customerModelToRemove = customers.FirstOrDefault(c => c.Email.ToLower() == Email)!;
+        CustomerModel customerModelToRemove = customers.FirstOrDefault(c => c.Email.ToLower() == email)!;
 
 
-        // If the correct email is found, that item is deleted and then the updated list is saved.
+        // If the correct email is found, that item is deleted and then the updated list is saved and the method returns a bool "true".
         if (customerModelToRemove != null)
         {
             customers.Remove(customerModelToRemove);
@@ -115,15 +115,19 @@ public class CustomerRepository : ICustomerRepository
     /* ------------------------------------ chatGPT code END --------------------------------------------------- */
 
 
-    public CustomerModel GetCustomerByName(string FirstName)
+
+
+    // Thanks to chatGPT's help in creating the DeleteCustomer() method, I was able to understand how to build this code as I couldn't find any good information about this on Google or Youtube.
+
+    public CustomerModel GetCustomerByName(string name)
     {
         
         List<CustomerModel> customers = GetAllCustomers();
-        CustomerModel customerToDisplay = customers.FirstOrDefault(c => c.FirstName.ToLower() == FirstName)!; // Code debugged with help by chatGPT!
+        CustomerModel customerToDisplay = customers.FirstOrDefault(c => c.FirstName.ToLower() == name)!; // Code debugged with help by chatGPT!
 
         if (customerToDisplay is null)
         {
-            throw new Exception($"Could not find the customer {FirstName}");
+            throw new Exception($"Could not find the customer {name}");
         }
         
         return customerToDisplay;
