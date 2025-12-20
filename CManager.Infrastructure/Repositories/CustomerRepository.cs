@@ -82,12 +82,19 @@ public class CustomerRepository : ICustomerRepository
         }
     }
 
-    /*----------------------------- Created by chatGPT! (But my own comments ) ----------------------------------*/
+    /*----------------------------- Created by chatGPT! (Except "Retrieves all customers" and my own comments ) ----------------------------------*/
 
     public bool DeleteCustomer(string email)
     {
+
         // Retrieves all customers.
-        List<CustomerModel> customers = GetAllCustomers();
+        var json = File.ReadAllText(_filePath);
+        var customers = JsonDataFormatter.Deserialize<List<CustomerModel>>(json);
+
+        if (customers is null) 
+        {
+            return false;
+        }
 
         // Iterates through the CustomerModel list to find the object with the correct email.
         CustomerModel customerModelToRemove = customers.FirstOrDefault(c => c.Email.ToLower() == email)!;
@@ -114,15 +121,16 @@ public class CustomerRepository : ICustomerRepository
 
     public CustomerModel GetCustomerByName(string name)
     {
-        
-        List<CustomerModel> customers = GetAllCustomers();
-        CustomerModel customerToDisplay = customers.FirstOrDefault(c => c.FirstName.ToLower() == name)!; // Code debugged with help by chatGPT!
+
+        var json = File.ReadAllText(_filePath);
+        var customers = JsonDataFormatter.Deserialize<List<CustomerModel>>(json);
+        CustomerModel customerToDisplay = customers!.FirstOrDefault(c => c.FirstName.ToLower() == name)!; // Code debugged with help by chatGPT!
 
         if (customerToDisplay is null)
         {
             throw new Exception($"Could not find the customer {name}");
         }
-        
+
         return customerToDisplay;
     }
 }
