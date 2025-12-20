@@ -13,7 +13,6 @@
 using CManager.Application.Services;
 using CManager.Application.Validators;
 using CManager.Presentation.ConsoleApp.Helpers;
-using System.Security.Cryptography.X509Certificates;
 
 namespace CManager.Presentation.ConsoleApp.Controllers;
 

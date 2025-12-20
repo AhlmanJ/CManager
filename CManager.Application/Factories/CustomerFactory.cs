@@ -1,6 +1,5 @@
 ﻿using CManager.Application.Helpers;
 using CManager.Domain.Models;
-using System.Reflection.Emit;
 
 namespace CManager.Application.Factories;
 
