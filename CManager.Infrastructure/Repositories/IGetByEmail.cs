@@ -2,7 +2,7 @@
 
 namespace CManager.Infrastructure.Repositories;
 
-public interface IGetByName
+public interface IGetByEmail
 {
-    CustomerModel GetCustomerByName(string FirstName);
+    CustomerModel GetCustomerByEmail(string email);
 }
