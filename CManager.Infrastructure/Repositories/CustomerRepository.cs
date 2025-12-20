@@ -24,7 +24,7 @@ I kept getting this error message when searching for a specific customer by firs
 
 
 using CManager.Domain.Models;
-using System.Text.Json;
+using CManager.Infrastructure.serialization;
 
 namespace CManager.Infrastructure.Repositories;
 
@@ -32,18 +32,11 @@ public class CustomerRepository : ICustomerRepository
 {
     private readonly string _filePath;
     private readonly string _directoryPath;
-    private readonly JsonSerializerOptions _jsonOptions;
 
     public CustomerRepository(string directoryPath = "Data", string fileName = "List.json")
     {  
         _directoryPath = directoryPath;
         _filePath = Path.Combine(_directoryPath, fileName);
-
-        _jsonOptions = new JsonSerializerOptions()
-        {
-            WriteIndented = true,
-            PropertyNameCaseInsensitive = true,
-        };
     }
 
     public bool CreateCustomer(List<CustomerModel> Customers)
@@ -53,7 +46,7 @@ public class CustomerRepository : ICustomerRepository
 
         try
         {
-            var json = JsonSerializer.Serialize(Customers, _jsonOptions);
+            var json = JsonDataFormatter.serialize(Customers);
 
             if(!Directory.Exists(_directoryPath))
                 Directory.CreateDirectory(_directoryPath);
@@ -79,7 +72,7 @@ public class CustomerRepository : ICustomerRepository
         try
         {
             var json = File.ReadAllText(_filePath);
-            var customers = JsonSerializer.Deserialize<List<CustomerModel>>(json, _jsonOptions);
+            var customers = JsonDataFormatter.Deserialize<List<CustomerModel>>(json);
             return customers ?? [];
         }
         catch (Exception ex)
