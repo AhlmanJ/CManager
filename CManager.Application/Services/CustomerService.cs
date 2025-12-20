@@ -9,8 +9,6 @@ In this file, I have used chatGPT to create the service to delete a customer!
 
 
 using CManager.Application.Factories;
-using CManager.Application.Helpers;
-using CManager.Application.Services;
 using CManager.Domain.Models;
 using CManager.Infrastructure.Repositories;
 
