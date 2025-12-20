@@ -119,16 +119,16 @@ public class CustomerRepository : ICustomerRepository
 
     // Thanks to chatGPT's help in creating the DeleteCustomer() method, I was able to understand how to build this code as I couldn't find any good information about this on Google or Youtube.
 
-    public CustomerModel GetCustomerByName(string name)
+    public CustomerModel GetCustomerByEmail(string email)
     {
 
         var json = File.ReadAllText(_filePath);
         var customers = JsonDataFormatter.Deserialize<List<CustomerModel>>(json);
-        CustomerModel customerToDisplay = customers!.FirstOrDefault(c => c.FirstName.ToLower() == name)!; // Code debugged with help by chatGPT!
+        CustomerModel customerToDisplay = customers!.FirstOrDefault(c => c.Email.ToLower() == email)!; // Code debugged with help by chatGPT!
 
         if (customerToDisplay is null)
         {
-            throw new Exception($"Could not find the customer {name}");
+            throw new Exception($"Could not find the customer {email}");
         }
 
         return customerToDisplay;

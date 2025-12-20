@@ -8,7 +8,7 @@ public interface ICustomerService
 
     IEnumerable<CustomerModel> GetAllCustomers(out bool hasError);
 
-    CustomerModel GetCustomerByName(string name);
+    CustomerModel GetCustomerByEmail(string email);
 
     bool DeleteCustomer(string email);
 }

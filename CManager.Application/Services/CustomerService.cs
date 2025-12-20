@@ -65,9 +65,9 @@ public class CustomerService : ICustomerService
 
     // Thanks to chatGPT's help in creating the DeleteCustomer() method, I was able to understand how to build this code as I couldn't find any good information about this on Google or Youtube.
 
-    public CustomerModel GetCustomerByName(string name)
+    public CustomerModel GetCustomerByEmail(string email)
     {
-        var CustomerModel = _customerRepository.GetCustomerByName(name);
+        var CustomerModel = _customerRepository.GetCustomerByEmail(email);
         return CustomerModel;
     }
 }

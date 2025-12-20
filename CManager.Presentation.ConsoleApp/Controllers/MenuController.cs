@@ -57,7 +57,7 @@ public class MenuController
                     GetAllCustomers();
                     break;
                 case "3":
-                    GetCustomerByName();
+                    GetCustomerByEmail();
                     break; 
                 case "4":
                     DeleteCustomer();
@@ -196,7 +196,7 @@ public class MenuController
         ReadKey.SystemHolder();
     }
 
-    public void GetCustomerByName()
+    public void GetCustomerByEmail()
     {
         var customers = _customerService.GetAllCustomers(out bool hasError);
 
@@ -215,17 +215,17 @@ public class MenuController
         Console.WriteLine("-----------------------------------------------");
         Console.WriteLine("Enter (E)xit if you want to return to Main menu.");
         Console.WriteLine("");
-        Console.Write("Enter customer First name: ");
-        string name = Console.ReadLine()!.ToLower();
+        Console.Write("Enter customer Email: ");
+        string email = Console.ReadLine()!.ToLower();
 
-        if (name == "e")
+        if (email == "e")
         {
             Console.WriteLine("Returning to Main menu..");
         }
 
         try
         {
-            var customer = _customerService.GetCustomerByName(name);
+            var customer = _customerService.GetCustomerByEmail(email);
 
             Console.WriteLine("");
             Console.Clear();
@@ -249,7 +249,7 @@ public class MenuController
         catch (Exception)
         {
             Console.Clear();
-            Console.WriteLine($"The requested customer '{name}' could not be found.");
+            Console.WriteLine($"The requested customer '{email}' could not be found.");
             
         }
 
