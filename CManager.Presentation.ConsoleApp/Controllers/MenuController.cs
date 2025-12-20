@@ -39,7 +39,7 @@ public class MenuController
             Console.WriteLine("");
             Console.WriteLine("1. Create Customer.");
             Console.WriteLine("2. View All Customers.");
-            Console.WriteLine("3. View One Customer.");
+            Console.WriteLine("3. View All Info About One Customer.");
             Console.WriteLine("4. Delete Customer.");
             Console.WriteLine("Q. Exit. ");
             Console.WriteLine("");
@@ -147,11 +147,6 @@ public class MenuController
     {
         var customers = _customerService.GetAllCustomers(out bool hasError);
 
-        if (hasError)
-            Console.Clear();
-            Console.WriteLine("");
-            Console.WriteLine("Could not display all customers. Please try again in a moment.");
-
         if (!customers.Any())
         {
             Console.Clear();
@@ -162,7 +157,7 @@ public class MenuController
 
         Console.Clear();
         Console.WriteLine("Delete customer from list:");
-        Console.WriteLine("");
+        Console.WriteLine("-----------------------------------------------");
         Console.WriteLine("Customers in the system:");
         Console.WriteLine("");
 
@@ -173,9 +168,15 @@ public class MenuController
                 Console.WriteLine("-----------------------------------------------");
             }
 
+        Console.WriteLine("Enter (E)xit if you want to return to Main menu.");
         Console.WriteLine("");
         Console.Write("Enter customer Email to delete: ");
         string email = Console.ReadLine()!.ToLower();
+
+        if (email == "e")
+        {
+            Console.WriteLine("Returning to Main menu..");
+        }
 
         var result = _customerService.DeleteCustomer(email);
 
@@ -185,7 +186,7 @@ public class MenuController
             Console.WriteLine("");
             Console.WriteLine($"Customer {email} has been deleted.");
         }
-        else
+        else if (email != "e")
         {
             Console.Clear();
             Console.WriteLine("");
@@ -211,8 +212,16 @@ public class MenuController
             return;
         }
 
+        Console.WriteLine("-----------------------------------------------");
+        Console.WriteLine("Enter (E)xit if you want to return to Main menu.");
+        Console.WriteLine("");
         Console.Write("Enter customer First name: ");
         string name = Console.ReadLine()!.ToLower();
+
+        if (name == "e")
+        {
+            Console.WriteLine("Returning to Main menu..");
+        }
 
         try
         {
