@@ -1,11 +1,6 @@
-﻿using CManager.Domain.Models;
+﻿namespace CManager.Infrastructure.Repositories;
 
-namespace CManager.Infrastructure.Repositories;
-
-public interface ICustomerRepository
+public interface ICustomerRepository : ICreate, IGetAll, IGetByName, IDelete
 {
-    bool CreateCustomer(List<CustomerModel> Customers);
-    List<CustomerModel> GetAllCustomers();
-    CustomerModel GetCustomerByName(string FirstName);
-    bool DeleteCustomer(string Email);
+    
 }
