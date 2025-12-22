@@ -1,4 +1,4 @@
-﻿namespace CManager.Application.Helpers;
+﻿namespace CManager.Business.Helpers;
 
 public static class CustomerIdGenerator
 {

@@ -1,7 +1,7 @@
 ﻿using CManager.Infrastructure.Repositories;
 using System.Text.RegularExpressions;
 
-namespace CManager.Application.Validators;
+namespace CManager.Business.Validators;
 
 public class EmailValidator
 {

@@ -10,8 +10,8 @@
 
 
 
-using CManager.Application.Services;
-using CManager.Application.Validators;
+using CManager.Business.Services;
+using CManager.Business.Validators;
 using CManager.Presentation.ConsoleApp.Helpers;
 
 namespace CManager.Presentation.ConsoleApp.Controllers;
@@ -64,7 +64,7 @@ public class MenuController
                     break;
                 case "q":
                     Console.Clear();
-                    Console.WriteLine("The program is shut down...");
+                    Console.WriteLine("The program is shutting down...");
                     Console.WriteLine("Thank you for using CManager!");
                     Console.WriteLine("");
                     Console.WriteLine("Press any key to continue....");

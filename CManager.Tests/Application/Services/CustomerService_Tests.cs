@@ -37,13 +37,13 @@ How to throw Exception - Learnt byt chatGPT. ( Throws(new Exception("DB error"))
 
  */
 
-using CManager.Application.Services;
+using CManager.Business.Services;
 using CManager.Domain.Models;
 using CManager.Infrastructure.Repositories;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 
-namespace CManager.Tests.Application.Services;
+namespace CManager.Tests.Business.Services;
 
 public class CustomerService_Tests
 {
@@ -103,7 +103,7 @@ public class CustomerService_Tests
 
     [Fact]
 
-    public void GetCustomerByName_ShouldReturn_CustomerModel_WhenCustomerFound()
+    public void GetCustomerByEmail_ShouldReturn_CustomerModel_WhenCustomerFound()
     {
 
         // ----------------------------------- I got help by chatGPT to troubleshoot this test --------------------------------------------------------
@@ -129,12 +129,12 @@ public class CustomerService_Tests
         var customerRepository = Substitute.For<ICustomerRepository>();
 
         // Here I had written " Returns( new customerModel()); " , instead of customerModel.
-        customerRepository.GetCustomerByName("FirstName").Returns(customerModel);
+        customerRepository.GetCustomerByEmail("FirstName").Returns(customerModel);
 
         var customerService = new CustomerService(customerRepository);
 
         // Act
-        var result = customerService.GetCustomerByName("FirstName");
+        var result = customerService.GetCustomerByEmail("FirstName");
 
         // Assert
         Assert.NotNull(result);
