@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using CManager.Presentation.GuiApp.ViewModels;
+using System.Windows;
 
 
 namespace CManager.Presentation.GuiApp
@@ -8,9 +9,11 @@ namespace CManager.Presentation.GuiApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        // Connects MainViewModel and ViewModel thru "DataContext".
+        public MainWindow(MainViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }
