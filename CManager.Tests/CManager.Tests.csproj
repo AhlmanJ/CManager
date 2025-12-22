@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CManager.Application\CManager.Application.csproj" />
+    <ProjectReference Include="..\CManager.Application\CManager.Business.csproj" />
     <ProjectReference Include="..\CManager.Domain\CManager.Domain.csproj" />
     <ProjectReference Include="..\CManager.Infrastructure\CManager.Infrastructure.csproj" />
     <ProjectReference Include="..\CManager.Presentation.ConsoleApp\CManager.Presentation.ConsoleApp.csproj" />

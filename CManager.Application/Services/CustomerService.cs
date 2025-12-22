@@ -8,11 +8,11 @@ In this file, I have used chatGPT to create the service to delete a customer!
 
 
 
-using CManager.Application.Factories;
+using CManager.Business.Factories;
 using CManager.Domain.Models;
 using CManager.Infrastructure.Repositories;
 
-namespace CManager.Application.Services;
+namespace CManager.Business.Services;
 
 public class CustomerService : ICustomerService
 {

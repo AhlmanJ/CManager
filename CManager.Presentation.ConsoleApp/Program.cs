@@ -1,6 +1,6 @@
 ﻿// Program.cs
 
-using CManager.Application.Services;
+using CManager.Business.Services;
 using CManager.Infrastructure.Repositories;
 using CManager.Presentation.ConsoleApp.Controllers;
 using Microsoft.Extensions.DependencyInjection;

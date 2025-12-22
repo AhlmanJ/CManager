@@ -1,7 +1,7 @@
-﻿using CManager.Application.Helpers;
+﻿using CManager.Business.Helpers;
 using CManager.Domain.Models;
 
-namespace CManager.Application.Factories;
+namespace CManager.Business.Factories;
 
 public static class CustomerFactory
 {
