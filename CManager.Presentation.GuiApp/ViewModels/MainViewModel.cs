@@ -10,7 +10,7 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private ObservableObject _currentViewModel = null!;
 
-    // Using dependency injection to make "Home ViewModel" my starting view.
+    // Using dependency injection to make "Main ViewModel" my starting view.
     public MainViewModel(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
