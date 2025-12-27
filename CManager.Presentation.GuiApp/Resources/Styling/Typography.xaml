@@ -8,4 +8,7 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="#B55400" />
     </Style>
+
+    
+
 </ResourceDictionary>

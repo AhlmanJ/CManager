@@ -33,6 +33,9 @@ public partial class App : Application
 
                 services.AddTransient<DisplayAllCustomersViewModel>();
                 services.AddTransient<DisplayAllCustomersView>();
+
+                services.AddTransient<DisplayInfoOneCustomerViewModel>();
+                services.AddTransient<DisplayInfoOneCustomerView>();
             })
             .Build();
     }

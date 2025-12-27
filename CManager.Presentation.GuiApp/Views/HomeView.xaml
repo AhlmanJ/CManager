@@ -7,9 +7,15 @@
              xmlns:viewmodels="clr-namespace:CManager.Presentation.GuiApp.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}"
              mc:Ignorable="d" 
-             Background="#222831"
              d:DesignHeight="700" d:DesignWidth="400">
-    <Grid>
-        
-    </Grid>
+    
+    <Border Background="#222831" CornerRadius="0 0 25 25">
+        <Grid>
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="../Resources/Images/ImageByChatGPT1.png" Height="320" Margin="0 0 0 20" />
+                <Button x:Name="CreateCustomer_Button" Content="Create Customer" Style="{StaticResource Standard_Buttons}" Command="{Binding GoToCreateCustomerCommand}"/>
+                <Button x:Name="DisplayCustomers_Button" Content="Display All Customers" Style="{StaticResource Standard_Buttons}" Command="{Binding GoToDisplayCustomersCommand}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </UserControl>
