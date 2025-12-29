@@ -53,7 +53,7 @@
                             </StackPanel>
 
                             <StackPanel Grid.Column="1" Margin="0 -15 0 0">
-                                <Button Style="{StaticResource CustomerInfo_Button}" Command="{Binding DataContext.DisplayInfoOneCustomerCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                                <Button Style="{StaticResource CustomerInfo_Button}" Command="{Binding DataContext.DisplayInfoOneCustomerCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
                             </StackPanel>
                             
                             <!-- I got help from chatGPT with the CommandParameter in this code! -->
