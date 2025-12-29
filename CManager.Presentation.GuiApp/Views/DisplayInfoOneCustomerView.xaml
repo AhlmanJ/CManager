@@ -9,7 +9,87 @@
              mc:Ignorable="d"
              Background="#222831"
              d:DesignHeight="700" d:DesignWidth="400">
-    <Grid>
-        <TextBlock Text="Info One Customer" Foreground="#FFFFFF"/>
+    
+    <Grid Margin="15 10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+
+        
+        
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="0 20 0 0">
+            <Border BorderThickness="2" BorderBrush="#B55400" Width="270" Margin="0 20 0 0">
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="All Customer Info" Style="{StaticResource AllInfoOneCustomer_Heading}"/>
+            </Border>
+        </StackPanel>
+        <StackPanel Margin="0 20 0 0" Grid.Row="1">
+            <Label Content="First Name:" Style="{StaticResource Label}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="{Binding Customer.FirstName}" Grid.Column="1" Style="{StaticResource DisplayCustomerInfo_Text}" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Margin="0 20 0 0" Grid.Row="2">
+            <Label Content="Last Name:" Style="{StaticResource Label}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <TextBlock Text="{Binding Customer.LastName}" Grid.Column="1" Style="{StaticResource DisplayCustomerInfo_Text}" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Margin="0 20 0 0" Grid.Row="3">
+            <Label Content="Email:" Style="{StaticResource Label}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock Text="{Binding Customer.Email}" Grid.Column="1" Style="{StaticResource DisplayCustomerInfo_Text}" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Margin="0 20 0 0" Grid.Row="4">
+            <Label Content="Phone:" Style="{StaticResource Label}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <TextBlock Text="{Binding Customer.PhoneNr}" Grid.Column="1" Style="{StaticResource DisplayCustomerInfo_Text}" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Margin="0 20 0 0" Grid.Row="5">
+            <Label Content="Street:" Style="{StaticResource Label}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <TextBlock Text="{Binding Customer.Address.StreetAddress}" Grid.Column="1" Style="{StaticResource DisplayCustomerInfo_Text}" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Margin="0 20 0 0" Grid.Row="6">
+            <Label Content="ZipCode:" Style="{StaticResource Label}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Grid.Column="1">
+            <TextBlock Text="{Binding Customer.Address.ZipCode}" Grid.Column="1" Style="{StaticResource DisplayCustomerInfo_Text}" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Margin="0 20 0 0" Grid.Row="7">
+            <Label Content="City:" Style="{StaticResource Label}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="7" Grid.Column="1">
+            <TextBlock Text="{Binding Customer.Address.City}" Grid.Column="1" Style="{StaticResource DisplayCustomerInfo_Text}" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2">
+            <Button x:Name="Edit_Button" Content="Edit" Style="{StaticResource Standard_Buttons}" Command="{Binding UpdateCustomerCommand}" Margin="0 30 0 0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="9" Grid.ColumnSpan="2">
+            <Button x:Name="Cancel_Button" Content="Cancel" Style="{StaticResource Standard_Buttons}" Command="{Binding CancelButtonCommand}" Margin="0 5 0 0"/>
+        </StackPanel>
     </Grid>
 </UserControl>

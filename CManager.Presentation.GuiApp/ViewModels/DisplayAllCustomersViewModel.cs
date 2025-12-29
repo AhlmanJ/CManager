@@ -53,10 +53,13 @@ public partial class DisplayAllCustomersViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void DisplayInfoOneCustomer()
+    private void DisplayInfoOneCustomer(CustomerModel customer)
     {
+        var displayInfoOneCustomerViewModel = _serviceProvider.GetRequiredService<DisplayInfoOneCustomerViewModel>();
+        displayInfoOneCustomerViewModel.Customer = customer;
+
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<DisplayInfoOneCustomerViewModel>();
+        mainViewModel.CurrentViewModel = displayInfoOneCustomerViewModel;
     }
 }
 

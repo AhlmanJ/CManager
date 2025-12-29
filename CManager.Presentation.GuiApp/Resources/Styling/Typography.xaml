@@ -11,7 +11,8 @@
     </Style>
 
     <!-- Label in Create customer view -->
-    <Style x:Key="CreateCustomer_Label" TargetType="Label">
+    <Style x:Key="Label" TargetType="Label">
+        <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Foreground" Value="#B55400" />
         <Setter Property="Background" Value="#222831" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -37,7 +38,7 @@
         <Setter Property="FontSize" Value="25" />
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
-    
+
     <!-- ListView for Customers list -->
     <Style x:Key="CustomersList_ListView" TargetType="ListView">
         <Setter Property="Background" Value="#222831" />
@@ -48,6 +49,30 @@
         <Setter Property="FontSize" Value="16" />
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="Foreground" Value="#FFFFFF" />
+    </Style>
+
+    <!-- Heading for Display all info about customer -->
+    <Style x:Key="AllInfoOneCustomer_Heading" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="#B55400" />
+        <Setter Property="Background" Value="#222831" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- TextBlock in display customer all info view -->
+    <Style x:Key="DisplayCustomerInfo_Text" TargetType="TextBlock">
+        <Setter Property="Height" Value="30" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#FFFFFF" />
+        <Setter Property="Background" Value="#222831" />
+        <Setter Property="Padding" Value="0 3 0 0" />
+        <Setter Property="Width" Value="270" />
+        <Setter Property="Margin" Value="0 20 30 0" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
 </ResourceDictionary>

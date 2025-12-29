@@ -26,51 +26,51 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
-
+        
         <StackPanel Margin="0 20 0 0" Grid.Row="0">
-            <Label Content="First Name:" Style="{StaticResource CreateCustomer_Label}"/>
+            <Label Content="First Name:" Style="{StaticResource Label}"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBox Text="{Binding CustomerModel.FirstName}" Grid.Column="1" Style="{StaticResource CreateCustomer_Text}" ></TextBox>
         </StackPanel>
 
         <StackPanel Margin="0 20 0 0" Grid.Row="1">
-            <Label Content="Last Name:" Style="{StaticResource CreateCustomer_Label}"/>
+            <Label Content="Last Name:" Style="{StaticResource Label}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBox Text="{Binding CustomerModel.LastName}" Grid.Column="1" Style="{StaticResource CreateCustomer_Text}" ></TextBox>
         </StackPanel>
 
         <StackPanel Margin="0 20 0 0" Grid.Row="2">
-            <Label Content="Email:" Style="{StaticResource CreateCustomer_Label}"/>
+            <Label Content="Email:" Style="{StaticResource Label}"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1">
             <TextBox Text="{Binding CustomerModel.Email}" Grid.Column="1" Style="{StaticResource CreateCustomer_Text}" ></TextBox>
         </StackPanel>
 
         <StackPanel Margin="0 20 0 0" Grid.Row="3">
-            <Label Content="Phone:" Style="{StaticResource CreateCustomer_Label}"/>
+            <Label Content="Phone:" Style="{StaticResource Label}"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1">
             <TextBox Text="{Binding CustomerModel.PhoneNr}" Grid.Column="1" Style="{StaticResource CreateCustomer_Text}" ></TextBox>
         </StackPanel>
 
         <StackPanel Margin="0 20 0 0" Grid.Row="4">
-            <Label Content="Street:" Style="{StaticResource CreateCustomer_Label}"/>
+            <Label Content="Street:" Style="{StaticResource Label}"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="1">
             <TextBox Text="{Binding CustomerModel.Address.StreetAddress}" Grid.Column="1" Style="{StaticResource CreateCustomer_Text}" ></TextBox>
         </StackPanel>
 
         <StackPanel Margin="0 20 0 0" Grid.Row="5">
-            <Label Content="ZipCode:" Style="{StaticResource CreateCustomer_Label}"/>
+            <Label Content="ZipCode:" Style="{StaticResource Label}"/>
         </StackPanel>
         <StackPanel Grid.Row="5" Grid.Column="1">
             <TextBox Text="{Binding CustomerModel.Address.ZipCode}" Grid.Column="1" Style="{StaticResource CreateCustomer_Text}" ></TextBox>
         </StackPanel>
 
         <StackPanel Margin="0 20 0 0" Grid.Row="6">
-            <Label Content="City:" Style="{StaticResource CreateCustomer_Label}"/>
+            <Label Content="City:" Style="{StaticResource Label}"/>
         </StackPanel>
         <StackPanel Grid.Row="6" Grid.Column="1">
             <TextBox Text="{Binding CustomerModel.Address.City}" Grid.Column="1" Style="{StaticResource CreateCustomer_Text}" ></TextBox>
