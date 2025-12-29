@@ -84,5 +84,86 @@
 
     </Style>
 
+    <!-- Customer information button -->
+    <Style x:Key="CustomerInfo_Button" TargetType="Button">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="35" />
+        <Setter Property="Margin" Value="0 18 0 0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+        <Setter Property="FontSize" Value="35" />
+        <Setter Property="Content" Value="&#xF13F;" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="Foreground" Value="#000000" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding Background}"
+                            CornerRadius="5"
+                        >
+                        <ContentPresenter 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                         ></ContentPresenter>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#B55400" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#9FABBD" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Customer remove button -->
+    <Style x:Key="CustomerRemove_Button" TargetType="Button">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="35" />
+        <Setter Property="Margin" Value="0 18 0 0" />
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+        <Setter Property="Content" Value="&#xE74D;" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="Foreground" Value="#000000" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ButtonBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding Background}"
+                        CornerRadius="5"
+                    >
+                        <ContentPresenter 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                     ></ContentPresenter>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="Red" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#9FABBD" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>

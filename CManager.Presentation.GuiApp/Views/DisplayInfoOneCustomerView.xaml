@@ -10,6 +10,6 @@
              Background="#222831"
              d:DesignHeight="700" d:DesignWidth="400">
     <Grid>
-            
+        <TextBlock Text="Info One Customer" Foreground="#FFFFFF"/>
     </Grid>
 </UserControl>
