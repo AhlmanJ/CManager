@@ -39,6 +39,9 @@ public partial class App : Application
                 services.AddTransient<DisplayInfoOneCustomerViewModel>();
                 services.AddTransient<DisplayInfoOneCustomerView>();
 
+                services.AddTransient<EditCustomerViewModel>();
+                services.AddTransient<EditCustomerView>();
+
                 // I didn't know I was supposed to register Service and Repository here. When my app crashed i had to get help with debugging from chatGPT and then i solved it.
                 services.AddSingleton<ICustomerService, CustomerService>();
                 services.AddSingleton<ICustomerRepository, CustomerRepository>();

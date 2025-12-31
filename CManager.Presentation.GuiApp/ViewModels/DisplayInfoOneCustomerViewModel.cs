@@ -15,7 +15,7 @@ public partial class DisplayInfoOneCustomerViewModel : ObservableObject
     private readonly IServiceProvider _serviceProvider;
 
     [ObservableProperty]
-    private CustomerModel _customer = new();
+    private CustomerModel customer = new();
 
     public DisplayInfoOneCustomerViewModel(IServiceProvider serviceProvider)
     {
@@ -24,11 +24,19 @@ public partial class DisplayInfoOneCustomerViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void EditCustomer()
+    {
+        var editCustomerViewModel = _serviceProvider.GetRequiredService<EditCustomerViewModel>();
+        editCustomerViewModel.Customer = Customer;
+
+        var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = editCustomerViewModel;
+    }
+
+    [RelayCommand]
     private void CancelButton()
     {
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<DisplayAllCustomersViewModel>();
     }
-
-
 }

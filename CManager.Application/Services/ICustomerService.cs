@@ -11,4 +11,6 @@ public interface ICustomerService
     CustomerModel GetCustomerByEmail(string email);
 
     bool DeleteCustomer(string email);
+
+    bool UpdateCustomer(CustomerModel customer);
 }
