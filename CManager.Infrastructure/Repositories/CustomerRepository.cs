@@ -133,4 +133,34 @@ public class CustomerRepository : ICustomerRepository
 
         return customerToDisplay;
     }
+
+
+
+// To create this repository, I have been helped by articles on the internet (Source reference is available if necessary.) and also chatGPT.
+    public bool UpdateCustomer(CustomerModel customer)
+    {
+        var json = File.ReadAllText(_filePath);
+
+        var customers = JsonDataFormatter.Deserialize<List<CustomerModel>>(json);
+        if(customers is null) 
+             return false;
+
+        var oldCustomerInfo = customers.FirstOrDefault(c => c.Id == customer.Id);
+
+        if (oldCustomerInfo == null) 
+            return false;
+
+        // In this part, I have done the same thing as both the internet and chatGPT examples have shown.
+        oldCustomerInfo.FirstName = customer.FirstName;
+        oldCustomerInfo.LastName = customer.LastName;
+        oldCustomerInfo.Email = customer.Email;
+        oldCustomerInfo.PhoneNr = customer.PhoneNr;
+        oldCustomerInfo.Address.StreetAddress = customer.Address.StreetAddress;
+        oldCustomerInfo.Address.ZipCode = customer.Address.ZipCode;
+        oldCustomerInfo.Address.City = customer.Address.City;
+        
+        File.WriteAllText(_filePath, JsonDataFormatter.serialize(customers));
+        
+        return true;
+    }
 }

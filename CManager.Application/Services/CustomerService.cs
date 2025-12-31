@@ -11,6 +11,7 @@ In this file, I have used chatGPT to create the service to delete a customer!
 using CManager.Business.Factories;
 using CManager.Domain.Models;
 using CManager.Infrastructure.Repositories;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CManager.Business.Services;
 
@@ -63,11 +64,31 @@ public class CustomerService : ICustomerService
 
     /* ------------------------------------ chatGPT code END --------------------------------------------------- */
 
-    // Thanks to chatGPT's help in creating the DeleteCustomer() method, I was able to understand how to build this code as I couldn't find any good information about this on Google or Youtube.
 
+
+
+    // Thanks to chatGPT's help in creating the DeleteCustomer() method, I was able to understand how to build this code as I couldn't find any good information about this on Google or Youtube.
     public CustomerModel GetCustomerByEmail(string email)
     {
         var CustomerModel = _customerRepository.GetCustomerByEmail(email);
         return CustomerModel;
+    }
+
+    public bool UpdateCustomer(CustomerModel customer)
+    {
+        if (customer == null) return false;
+
+        if( string.IsNullOrWhiteSpace(customer.FirstName)||
+            string.IsNullOrWhiteSpace(customer.LastName)|| 
+            string.IsNullOrWhiteSpace(customer.Email)|| 
+            string.IsNullOrWhiteSpace(customer.PhoneNr)||
+            string.IsNullOrWhiteSpace(customer.Address.StreetAddress)||
+            string.IsNullOrWhiteSpace(customer.Address.StreetAddress)||
+            string.IsNullOrWhiteSpace(customer.Address.City)) { return false; }
+
+        var newCustomerInfo = customer;
+        var result = _customerRepository.UpdateCustomer(newCustomerInfo);
+
+        return result;
     }
 }

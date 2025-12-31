@@ -7,7 +7,7 @@ public class InputValidator
         while (true) 
         {
             Console.Write($"{FieldName}");
-            var input = Console.ReadLine()!.ToLower();
+            var input = Console.ReadLine()!.ToLower().Trim();
 
             if (!string.IsNullOrEmpty(input))
             {
