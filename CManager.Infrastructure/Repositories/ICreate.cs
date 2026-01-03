@@ -4,5 +4,5 @@ namespace CManager.Infrastructure.Repositories;
 
 public interface ICreate
 {
-    bool CreateCustomer(List<CustomerModel> Customers);
+    bool CreateCustomer(CustomerModel newCustomer);
 }

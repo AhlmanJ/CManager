@@ -39,14 +39,19 @@ public class CustomerRepository : ICustomerRepository
         _filePath = Path.Combine(_directoryPath, fileName);
     }
 
-    public bool CreateCustomer(List<CustomerModel> Customers)
+    public bool CreateCustomer(CustomerModel newCustomer)
     {
-        if(Customers == null)
+
+        var customer = newCustomer;
+        if (customer == null)
             return false;
+
+        var customerList = GetAllCustomers();
+        customerList.Add(customer);
 
         try
         {
-            var json = JsonDataFormatter.serialize(Customers);
+            var json = JsonDataFormatter.Serialize(customerList);
 
             if(!Directory.Exists(_directoryPath))
                 Directory.CreateDirectory(_directoryPath);
@@ -104,7 +109,8 @@ public class CustomerRepository : ICustomerRepository
         if (customerModelToRemove != null)
         {
             customers.Remove(customerModelToRemove);
-            CreateCustomer(customers);
+            var updatedJson = JsonDataFormatter.Serialize(customers);
+            File.WriteAllText(_filePath, updatedJson);
             return true;
         }
 
@@ -159,7 +165,7 @@ public class CustomerRepository : ICustomerRepository
         oldCustomerInfo.Address.ZipCode = customer.Address.ZipCode;
         oldCustomerInfo.Address.City = customer.Address.City;
         
-        File.WriteAllText(_filePath, JsonDataFormatter.serialize(customers));
+        File.WriteAllText(_filePath, JsonDataFormatter.Serialize(customers));
         
         return true;
     }

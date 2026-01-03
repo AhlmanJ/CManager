@@ -1,17 +1,13 @@
-﻿
-/*
+﻿/*
  
 !! Using chatGPT !! 
 In this file, I have used chatGPT to create the service to delete a customer!
 
  */
 
-
-
 using CManager.Business.Factories;
 using CManager.Domain.Models;
 using CManager.Infrastructure.Repositories;
-using System.Reflection.Metadata.Ecma335;
 
 namespace CManager.Business.Services;
 
@@ -27,10 +23,8 @@ public class CustomerService : ICustomerService
 
     public bool CreateCustomer(string firstName, string lastName, string email, string phoneNr, string streetAddress, string zipCode, string city)
     {
-        var customerModel = CustomerFactory.Create(firstName, lastName, email, phoneNr, streetAddress, zipCode, city);
-        var customers = _customerRepository.GetAllCustomers();
-        customers.Add(customerModel);
-        var result = _customerRepository.CreateCustomer(customers);
+        var newCustomer = CustomerFactory.Create(firstName, lastName, email, phoneNr, streetAddress, zipCode, city);
+        var result = _customerRepository.CreateCustomer(newCustomer);
         return result;
     }
 
@@ -54,6 +48,10 @@ public class CustomerService : ICustomerService
 
     public bool DeleteCustomer(string email)
     {
+        if (email == null)
+        {
+            return false;
+        }
 
         // Sends the email parameter to the "DeleteCustomer" method. Retrieves the result from the repository method "DeleteCustomer" and saves it in the variable result.
         bool result = _customerRepository.DeleteCustomer(email);
@@ -64,13 +62,12 @@ public class CustomerService : ICustomerService
 
     /* ------------------------------------ chatGPT code END --------------------------------------------------- */
 
-
-
-
     // Thanks to chatGPT's help in creating the DeleteCustomer() method, I was able to understand how to build this code as I couldn't find any good information about this on Google or Youtube.
     public CustomerModel GetCustomerByEmail(string email)
     {
+       
         var CustomerModel = _customerRepository.GetCustomerByEmail(email);
+
         return CustomerModel;
     }
 

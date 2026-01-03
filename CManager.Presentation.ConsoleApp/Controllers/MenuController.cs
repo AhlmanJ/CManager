@@ -175,6 +175,7 @@ public class MenuController
 
         if (email == "e")
         {
+            Console.Clear();
             Console.WriteLine("Returning to Main menu..");
         }
 
@@ -220,37 +221,40 @@ public class MenuController
 
         if (email == "e")
         {
+            Console.Clear();
             Console.WriteLine("Returning to Main menu..");
         }
-
-        try
+        else
         {
-            var customer = _customerService.GetCustomerByEmail(email);
+            try
+            {
+                var customer = _customerService.GetCustomerByEmail(email);
 
-            Console.WriteLine("");
-            Console.Clear();
-            Console.WriteLine("-----------------------------------------------");
+                Console.WriteLine("");
+                Console.Clear();
+                Console.WriteLine("-----------------------------------------------");
 
-            // ------------ ChatGPT helpt me by removing a foreach-loop here! --------------------
+                // ------------ ChatGPT helpt me by removing a foreach-loop here! --------------------
 
-            Console.WriteLine($"Customer Information:");
-            Console.WriteLine("");
-            Console.WriteLine($"Name: {customer.FirstName} {customer.LastName}");
-            Console.WriteLine($"ID: {customer.Id}");
-            Console.WriteLine($"Phone: {customer.PhoneNr}");
-            Console.WriteLine($"Email: {customer.Email}");
-            Console.WriteLine($"Address: {customer.Address.StreetAddress}");
-            Console.WriteLine($"ZipCode: {customer.Address.ZipCode}");
-            Console.WriteLine($"City: {customer.Address.City}");
-            Console.WriteLine("");
-            Console.WriteLine("-----------------------------------------------");
-            Console.WriteLine("");
-        }
-        catch (Exception)
-        {
-            Console.Clear();
-            Console.WriteLine($"The requested customer '{email}' could not be found.");
-            
+                Console.WriteLine($"Customer Information:");
+                Console.WriteLine("");
+                Console.WriteLine($"Name: {customer.FirstName} {customer.LastName}");
+                Console.WriteLine($"ID: {customer.Id}");
+                Console.WriteLine($"Phone: {customer.PhoneNr}");
+                Console.WriteLine($"Email: {customer.Email}");
+                Console.WriteLine($"Address: {customer.Address.StreetAddress}");
+                Console.WriteLine($"ZipCode: {customer.Address.ZipCode}");
+                Console.WriteLine($"City: {customer.Address.City}");
+                Console.WriteLine("");
+                Console.WriteLine("-----------------------------------------------");
+                Console.WriteLine("");
+            }
+            catch (Exception)
+            {
+                Console.Clear();
+                Console.WriteLine($"The requested customer '{email}' could not be found.");
+
+            }
         }
 
         ReadKey.SystemHolder();
