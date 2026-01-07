@@ -1,12 +1,8 @@
-﻿using CManager.Business.Services;
-using CManager.Domain.Models;
+﻿using CManager.Domain.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+
 
 namespace CManager.Presentation.GuiApp.ViewModels;
 

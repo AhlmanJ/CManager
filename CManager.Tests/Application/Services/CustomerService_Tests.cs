@@ -200,7 +200,7 @@ public class CustomerService_Tests
     {
         // Arrange
 
-        string email = null;
+        string email = null!;
 
         var customerRepository = Substitute.For<ICustomerRepository>();
         var customerService = new CustomerService(customerRepository);
