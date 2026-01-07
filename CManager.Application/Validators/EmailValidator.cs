@@ -29,7 +29,7 @@ public class EmailValidator
                     Console.WriteLine("");
                     Console.WriteLine("Do you want to continue with this email address or enter a different email address?");
                     Console.Write("Press (Y) to continue or (N) to enter a different email address:");
-                    answer = Console.ReadLine().ToLower();
+                    answer = Console.ReadLine()!.ToLower();
 
                     if (answer == "n")
                     {

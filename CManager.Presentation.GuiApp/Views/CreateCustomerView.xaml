@@ -1,4 +1,18 @@
-﻿<UserControl x:Class="CManager.Presentation.GuiApp.Views.CreateCustomerView"
+﻿
+   <!--             
+            ..... Help by Youtube and ChatGPT to validate input.....
+    
+        To be able to validate input fields in WPF, I had to use a video on YouTube.
+        But I still ran into problems with how to build the code.
+    
+        The problem was that I got an error that I couldn't use "style" twice in the same TextBox.
+        I got help from chatGPT on how I could reformulate the code I had written by following the Youtube video so that I didn't use Style twice,
+        I can avoid this problem by using "BasedOn" instead of "Style" when "calling" on the StaticResource, when I want to use the Styling for the TextBoxes.
+    
+        NOTE: Source reference to Youtube video is available if necessary.
+    -->
+    
+    <UserControl x:Class="CManager.Presentation.GuiApp.Views.CreateCustomerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
