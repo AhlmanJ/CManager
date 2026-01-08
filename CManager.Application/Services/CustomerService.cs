@@ -48,6 +48,7 @@ public class CustomerService : ICustomerService
 
     public bool DeleteCustomer(string email)
     {
+        // Creates a check so that the input parameter is not Null. If the input is Null, the method returns "false".
         if (email == null)
         {
             return false;
@@ -75,6 +76,7 @@ public class CustomerService : ICustomerService
     {
         if (customer == null) return false;
 
+        // A "Null or Whitespace check" for all parameters in the object.
         if( string.IsNullOrWhiteSpace(customer.FirstName)||
             string.IsNullOrWhiteSpace(customer.LastName)|| 
             string.IsNullOrWhiteSpace(customer.Email)|| 

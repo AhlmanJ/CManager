@@ -67,7 +67,16 @@ public partial class EditCustomerViewModel(IServiceProvider serviceProvider, ICu
             return;
         }
 
+        Customer.FirstName = Customer.FirstName.ToLower().Trim();
+        Customer.LastName = Customer.LastName.ToLower().Trim();
+        Customer.Email = Customer.Email.ToLower().Trim();
+        Customer.PhoneNr = Customer.PhoneNr.Trim();
+        Customer.Address.StreetAddress = Customer.Address.StreetAddress.ToLower().Trim();
+        Customer.Address.ZipCode = Customer.Address.ZipCode.Trim();
+        Customer.Address.City = Customer.Address.City.ToLower().Trim();
+
         var result = _customerService.UpdateCustomer(Customer);
+
         if(result)
         {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();

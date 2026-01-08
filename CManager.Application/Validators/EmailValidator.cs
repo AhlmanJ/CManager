@@ -14,7 +14,7 @@ public class EmailValidator
             var customers = customerRepository.GetAllCustomers();
 
             Console.Write($"{fieldName}");
-            var input = Console.ReadLine()!;
+            var input = Console.ReadLine()!.ToLower().Trim();
 
             var exists = customers.FirstOrDefault(c => c.Email == input);
 

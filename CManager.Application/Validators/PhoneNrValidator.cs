@@ -9,7 +9,7 @@ public class PhoneNrValidator
         while (true)
         {
             Console.Write($"{fieldName}");
-            var input = Console.ReadLine()!;
+            var input = Console.ReadLine()!.Trim();
 
             if (string.IsNullOrWhiteSpace(input))
             {

@@ -1,4 +1,7 @@
-﻿using CManager.Business.Services;
+﻿
+// Help by chatGPT to debug. I had to register Service and Repository, see the comments.
+
+using CManager.Business.Services;
 using CManager.Infrastructure.Repositories;
 using CManager.Presentation.GuiApp.ViewModels;
 using CManager.Presentation.GuiApp.Views;

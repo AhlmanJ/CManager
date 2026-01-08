@@ -1,4 +1,10 @@
-﻿namespace CManager.Business.Validators;
+﻿
+/*
+  A method to validate user input in the Console app. Uses "string FieldName" as an input parameter.
+  By using this as an input parameter, i don't need to declare a variable before calling the method. 
+  "FieldName" automatically declares a variable that can be used within the method.
+*/
+namespace CManager.Business.Validators;
 
 public class InputValidator
 {
