@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
 
 The program crashed because I had not registered my service and repository in "App.xaml.cs".
 I did not understand why until I got help with troubleshooting chatGPT. So in this code I have got help with troubleshooting chatGPT. 
@@ -33,13 +32,11 @@ public partial class CreateCustomerViewModel : ObservableObject
         _customerService = customerService;
     }
 
-
     [ObservableProperty]
     private CustomerModel customerModel = new()
     {
         Address = new CustomerAddressModel()  // ----> I got help from chatGPT with this.
     };
-
 
     // I got help from chatGPT on how to include the "Customer Address model" in the input fields to be able to pass them in my CreateCustomer method.
     [RelayCommand]
@@ -68,7 +65,7 @@ public partial class CreateCustomerViewModel : ObservableObject
 
         if (string.IsNullOrEmpty(CustomerModel.PhoneNr))
         {
-            MessageBox.Show("Please enter a valid Phonenumber.");
+            MessageBox.Show("Please enter a valid Phone number.");
             return;
         }
 
@@ -92,13 +89,13 @@ public partial class CreateCustomerViewModel : ObservableObject
 
         var result = _customerService.CreateCustomer(
 
-            CustomerModel.FirstName,
-            CustomerModel.LastName,
-            CustomerModel.Email.ToLower(),
-            CustomerModel.PhoneNr,
-            CustomerModel.Address.StreetAddress,
-            CustomerModel.Address.ZipCode,
-            CustomerModel.Address.City
+            CustomerModel.FirstName.ToLower().Trim(),
+            CustomerModel.LastName.ToLower().Trim(),
+            CustomerModel.Email.ToLower().Trim(),
+            CustomerModel.PhoneNr.Trim(),
+            CustomerModel.Address.StreetAddress.ToLower().Trim(),
+            CustomerModel.Address.ZipCode.Trim(),
+            CustomerModel.Address.City.ToLower().Trim()
 
         );
 

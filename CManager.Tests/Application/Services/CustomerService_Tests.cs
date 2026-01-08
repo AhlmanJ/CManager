@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  
 To understand how tests work, I have used both the lectures at school, YouTube, searched for information on the internet, and asked chatGPT for help and explanation.
 Unfortunately there was very limited information on the internet (that I could find),
@@ -32,14 +31,12 @@ using CManager.Infrastructure.Repositories;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 
-
 namespace CManager.Tests.Business.Services;
 
 public class CustomerService_Tests
 {
     // Test 1.
     [Fact]
-
     public void CreateCustomer_ShouldReturn_True_IfCustomer_Was_Created()
     {
         // Arrange
@@ -68,7 +65,6 @@ public class CustomerService_Tests
         c.Address.ZipCode == zipCode &&
         c.Address.City == city)).Returns(true);
 
-
         //Act
         var result = customerService.CreateCustomer(firstName, lastName, email, phoneNr, streetAddress, zipCode, city);
 
@@ -77,7 +73,6 @@ public class CustomerService_Tests
     }
 
     [Fact]
-
     public void CreateCustomer_ShouldReturn_False_IfCustomer_WasNot_Created()
     {
         // Arrange
@@ -107,11 +102,9 @@ public class CustomerService_Tests
     }
 
     [Fact]
-
     // Test 3.
     public void GetAllCustomers_ShouldReturn_ListOfCustomers_If_CustomersExists()
     {
-
         // Arrange
         var customerRepository = Substitute.For<ICustomerRepository>();
         var customerService = new CustomerService(customerRepository);
@@ -148,7 +141,6 @@ public class CustomerService_Tests
 
         // How to throw Exception - Learnt byt chatGPT. ( Throws(new Exception("DB error")); )
         customerRepository.GetAllCustomers().Throws(new Exception("DB error"));
-
         var customerService = new CustomerService(customerRepository);
 
         // Act
@@ -162,13 +154,11 @@ public class CustomerService_Tests
     }
 
     [Fact]
-
     public void DeleteCustomer_ShouldReturn_True_IfCustomer_Is_Deleted()
     {
         // Arrange
         var customerRepository = Substitute.For<ICustomerRepository>();
         customerRepository.DeleteCustomer("name").Returns(true);
-
         var customerService = new CustomerService(customerRepository);
 
         // Act
@@ -179,7 +169,6 @@ public class CustomerService_Tests
     }
 
     [Fact]
-
     public void DeleteCustomer_ShouldReturn_False_IfTheCustomerList_IsEmpty_Or_IfNoCustomerWasFoundInTheList()
     {
         // Arrange
@@ -195,17 +184,14 @@ public class CustomerService_Tests
     }
 
     [Fact]
-
     public void DeleteCustomer_ShouldReturn_False_IfEmailIsNull()
     {
         // Arrange
-
         string email = null!;
 
         var customerRepository = Substitute.For<ICustomerRepository>();
         var customerService = new CustomerService(customerRepository);
         
-
         // Act
         var result = customerService.DeleteCustomer(email);
 
@@ -215,7 +201,6 @@ public class CustomerService_Tests
 
     // Test 8.
     [Fact]
-
     public void GetCustomerByEmail_ShouldReturn_CustomerModel_WhenCustomerFound()
     {
 
@@ -243,11 +228,9 @@ public class CustomerService_Tests
 
         var customerRepository = Substitute.For<ICustomerRepository>();
         var customerService = new CustomerService(customerRepository);
-
         customerRepository.GetCustomerByEmail("test@domain.com").Returns(customerModel);
 
         // Act
-
         var expectedCustomerModel = customerService.GetCustomerByEmail("test@domain.com");
 
         // Assert
@@ -255,23 +238,19 @@ public class CustomerService_Tests
     }
 
     [Fact]
-
     public void GetCustomerByEmail_ShouldThrowException_If_CustomerCouldNotBeFound()
     {
         // Arrange
-
         var customerRepository = Substitute.For<ICustomerRepository>();
         var customerService = new CustomerService(customerRepository);
         string email = "test@domain.com";
         customerRepository.GetCustomerByEmail(email).Throws(new Exception("DB error"));
 
         // Act & Assert
-
         Assert.Throws<Exception>(() => customerService.GetCustomerByEmail(email));
     }
 
     [Fact]
-
     public void UpdateCustomer_ShouldReturn_False_If_CustomerIsNull()
     {
         // Arrange
@@ -289,7 +268,6 @@ public class CustomerService_Tests
     }
 
     [Fact]
-
     public void UpdateCustomer_ShouldReturn_True_If_TheCustomerIsUpdated()
     {
         // Arrange

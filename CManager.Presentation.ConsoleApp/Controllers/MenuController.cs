@@ -253,7 +253,6 @@ public class MenuController
             {
                 Console.Clear();
                 Console.WriteLine($"The requested customer '{email}' could not be found.");
-
             }
         }
 
