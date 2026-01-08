@@ -8,7 +8,7 @@ Some topics covered in this assignment:
 - Interfaces
 - Service- and Repository-pattern
 - Factories, helpers, Validators
-- Serialize Json
+- Serialize and deserialize Json
 - WPF-application
 - MVVM - Model-View-ViewModel
 - WPF navigation using CommunityToolkit.Mvvm
